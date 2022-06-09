@@ -3,22 +3,24 @@
 
 function TableBook(props) {
     const {books}= props
-
+    // console.log(books)
     return <table>
-        <tr>
-            <td>Title</td>
-            <td>Description</td>
-        </tr>
-        <tr>
-            {
-                books.map(book =>{
-                    return <tr key={book._id}>
-                        <td>{book.title}</td>
-                        <td>{book.description}</td>
-                    </tr>
-                })
-            }
-        </tr>
+       <thead>
+       <tr>
+           <td>Title</td>
+           <td>Description</td>
+       </tr>
+       </thead>
+        <tbody>
+        {
+            books.map(book =>{
+                return <tr key={book._id}>
+                    <td>{book.title}</td>
+                    <td>{book.description}</td>
+                </tr>
+            })
+        }
+        </tbody>
     </table>
 }
 export default TableBook

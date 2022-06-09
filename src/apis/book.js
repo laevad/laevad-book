@@ -8,7 +8,7 @@ export function addBookAPI(book) {
     return fetch("http://localhost:4000/books", {
             method: "POST",
             headers: {
-                "Content-Type:": "application/json",
+                "Content-Type": "application/json",
 
             },
             body: JSON.stringify(book)
@@ -21,7 +21,7 @@ export function updateBookApi(book) {
     return fetch(`http://localhost:4000/books/${book._id}`, {
             method: "PATCH",
             headers: {
-                "Content-Type:": "application/json",
+                "Content-Type": "application/json",
 
             },
             body: JSON.stringify(book)
@@ -34,7 +34,7 @@ export function deleteBookAPI(book) {
     return fetch(`http://localhost:4000/books/${book._id}`, {
             method: "DELETE",
             headers: {
-                "Content-Type:": "application/json",
+                "Content-Type": "application/json",
 
             },
             body: JSON.stringify(book)

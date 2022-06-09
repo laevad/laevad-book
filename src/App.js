@@ -2,17 +2,18 @@ import React, {useEffect, useState} from 'react';
 
 import {getBooksAPI, addBookAPI, updateBookApi, deleteBookAPI} from "./apis/book"
 import TableBook from "./components/TableBook";
+import CreateBook from "./components/CreateBook";
 
 function App() {
-  const [books, setBook] = useState([])
+  const [books, setBooks] = useState([])
   useEffect(()=>{
-    getBooksAPI().then(books => setBook(books));
+    getBooksAPI().then(books => setBooks(books));
   }, [])
 
   const addBook = (book) =>{
     return addBookAPI(book)
         .then(data => {
-          setBook([...book, data])
+          setBooks([...books, data])
         })
   }
 
@@ -27,15 +28,17 @@ function App() {
     return deleteBookAPI(id)
         .then(data => {
           if(data.deleteCount === 1){
-            setBook(books.filter(book => book._id !== id))
+            setBooks(books.filter(book => book._id !== id))
           }
         })
   }
 
 
   return ( <div className = "App" >
-    {/*<CreateBook oncreate={addBook}/>*/}
+
+      <CreateBook onCreate={addBook}/>
       <TableBook books={books}/>
+
   </div>)
 }
 
