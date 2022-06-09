@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
-import './App.css';
+
 import {getBooksAPI, addBookAPI, updateBookApi, deleteBookAPI} from "./apis/book"
-import TableBook from "./TableBook";
+import TableBook from "./components/TableBook";
 
 function App() {
   const [books, setBook] = useState([])
