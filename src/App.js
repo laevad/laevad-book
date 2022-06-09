@@ -1,25 +1,42 @@
-import logo from './logo.svg';
+import React, {useEffect, useState} from 'react';
 import './App.css';
+import {getBooksAPI, addBookAPI, updateBookApi, deleteBookAPI} from "./apis/book"
+import TableBook from "./TableBook";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  const [books, setBook] = useState([])
+  useEffect(()=>{
+    getBooksAPI().then(books => setBook(books));
+  }, [])
+
+  const addBook = (book) =>{
+    return addBookAPI(book)
+        .then(data => {
+          setBook([...book, data])
+        })
+  }
+
+  const updateBook = (book) =>{
+    return updateBookApi(book)
+        .then(data=>{
+          return data;
+        })
+  }
+
+  const deleteBook =(id) =>{
+    return deleteBookAPI(id)
+        .then(data => {
+          if(data.deleteCount === 1){
+            setBook(books.filter(book => book._id !== id))
+          }
+        })
+  }
+
+
+  return ( <div className = "App" >
+    {/*<CreateBook oncreate={addBook}/>*/}
+      <TableBook books={books}/>
+  </div>)
 }
 
 export default App;
