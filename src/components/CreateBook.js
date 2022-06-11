@@ -1,7 +1,6 @@
 import  React, {useState} from "react";
 
-function CreateBook(props) {
-    const {onCreate} = props
+function CreateBook({onCreate}) {
 
     const [book, setBook] = useState({
         title: "",
@@ -18,6 +17,8 @@ function CreateBook(props) {
     const onSubmit = (e) => {
       e.preventDefault()
         onCreate(book)
+
+
     }
 
     return <form onSubmit={onSubmit}>

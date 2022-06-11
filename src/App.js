@@ -27,7 +27,7 @@ function App() {
   const deleteBook =(id) =>{
     return deleteBookAPI(id)
         .then(data => {
-          if(data.deleteCount === 1){
+          if(data.deletedCount === 1){
             setBooks(books.filter(book => book._id !== id))
           }
         })
@@ -37,7 +37,7 @@ function App() {
   return ( <div className = "App" >
 
       <CreateBook onCreate={addBook}/>
-      <TableBook books={books}/>
+      <TableBook books={books} onDelete={deleteBook} onUpdate={updateBook}/>
 
   </div>)
 }

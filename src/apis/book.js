@@ -30,14 +30,13 @@ export function updateBookApi(book) {
         .then(data => data)
 }
 
-export function deleteBookAPI(book) {
-    return fetch(`http://localhost:4000/books/${book._id}`, {
+export function deleteBookAPI(id) {
+    return fetch(`http://localhost:4000/books/${id}`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json",
-
             },
-            body: JSON.stringify(book)
+
         })
         .then(res => res.json())
         .then(data => data)
